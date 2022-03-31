@@ -33,7 +33,7 @@ const Profile = () => {
                 src={
                   user.coverPicture
                     ? PF + user.coverPicture
-                    : PF + "person/noCover.png"
+                    : PF + "person/noCover.jpeg"
                 }
                 alt=""
               />
