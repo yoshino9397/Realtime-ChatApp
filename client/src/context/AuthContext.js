@@ -12,7 +12,10 @@ const INITIAL_STATE = {
     followers: [],
     followings: [],
   },
-  // user: null,
+
+  // user:JSON.parse(localStorage.getItem("user")) || null,
+  // isFetching: false,
+  // error: false,
   isFetching: false,
   error: false,
 };
