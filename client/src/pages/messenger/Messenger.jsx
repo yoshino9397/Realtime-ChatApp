@@ -2,6 +2,7 @@ import "./messenger.css";
 import Topbar from "../../components/topbar/Topbar";
 import Conversation from "../../components/conversations/Conversation";
 import Message from "../../components/message/Message";
+import ChatOnline from "../../components/chatOnline/ChatOnline";
 
 const Messenger = () => {
   return (
@@ -31,7 +32,9 @@ const Messenger = () => {
           </div>
         </div>
         <div className="chatOnline">
-          <div className="chatOnlineWrapper"></div>
+          <div className="chatOnlineWrapper">
+            <ChatOnline />
+          </div>
         </div>
       </div>
     </>
