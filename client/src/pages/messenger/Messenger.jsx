@@ -6,6 +6,7 @@ import Message from "../../components/message/Message";
 import ChatOnline from "../../components/chatOnline/ChatOnline";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { io } from "socket.io-client";
 
 const Messenger = () => {
   const { user } = useContext(AuthContext);
@@ -14,6 +15,7 @@ const Messenger = () => {
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [socket, setSocket] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +32,10 @@ const Messenger = () => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    setSocket(io("ws://localhost:8900"))
+  }, []);
 
   useEffect(() => {
     const getConversations = async () => {
