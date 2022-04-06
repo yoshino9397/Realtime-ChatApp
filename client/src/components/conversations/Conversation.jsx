@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./conversation.css";
+// import DeleteIcon from "@mui/icons-material/Delete";
 
 const Conversation = ({ conversation, currentUser }) => {
   const [user, setUser] = useState(null);
@@ -32,6 +33,12 @@ const Conversation = ({ conversation, currentUser }) => {
         alt=""
       />
       <span className="conversationName">{user?.username}</span>
+      {/* <DeleteIcon
+        fontSize="medium"
+        style={{
+          color: "white",
+        }}
+      /> */}
     </div>
   );
 };

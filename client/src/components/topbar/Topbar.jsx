@@ -6,10 +6,16 @@ import PersonIcon from "@mui/icons-material/Person";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Link } from "react-router-dom";
+import { logoutCall } from "../../apiCalls";
 
 const Topbar = () => {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { dispatch } = useContext(AuthContext);
+
+  const handleClick = () => {
+    logoutCall({ userCredential: null }, dispatch);
+  };
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -29,7 +35,9 @@ const Topbar = () => {
       <div className="topbarRight">
         <div className="topbarLinks">
           <span className="topbarLink">Homepage</span>
-          <span className="topbarLink">Timeline</span>
+          <span className="topbarLink" onClick={handleClick}>
+            Sign Out
+          </span>
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">

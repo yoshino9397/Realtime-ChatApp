@@ -2,20 +2,18 @@ import { createContext, useReducer } from "react";
 import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
-  user: {
-    _id: "623fc40d3b173b8e5c14955b",
-    username: "EijiOkumura",
-    email: "eijiokumura@gmail.com",
-    profilePicture: "person/eiji.png",
-    coverPicture: "person/eijibg.jpeg",
-    isAdmin: false,
-    followers: [],
-    followings: [],
-  },
+  // user: {
+  //   _id: "623fc40d3b173b8e5c14955b",
+  //   username: "EijiOkumura",
+  //   email: "eijiokumura@gmail.com",
+  //   profilePicture: "person/eiji.png",
+  //   coverPicture: "person/eijibg.jpeg",
+  //   isAdmin: false,
+  //   followers: [],
+  //   followings: [],
+  // },
 
-  // user:JSON.parse(localStorage.getItem("user")) || null,
-  // isFetching: false,
-  // error: false,
+  user: JSON.parse(localStorage.getItem("user")) || null,
   isFetching: false,
   error: false,
 };

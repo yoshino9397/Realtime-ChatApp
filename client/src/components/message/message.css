@@ -27,6 +27,8 @@ margin-right: 10px;
 .messageBottom{
     font-size: 12px;
     margin-top: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .message.own{
