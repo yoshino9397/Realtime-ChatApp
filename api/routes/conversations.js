@@ -15,6 +15,16 @@ router.post("/", async (req, res) => {
   }
 });
 
+//Delete conv
+router.delete("/:id", async (req, res) => {
+  try {
+    await Conversation.findByIdAndDelete(req.params.id);
+    res.status(200).json("Conversation has been deleted...");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //get conv of a user
 router.get("/:userId", async (req, res) => {
   try {
