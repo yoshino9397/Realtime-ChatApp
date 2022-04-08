@@ -73,7 +73,7 @@ const Post = ({ post }) => {
                 color: "#d73d6c"
               }}
             />
-            <span className="postLikeCounter">{like} people like it</span>
+            <span className="postLikeCounter">{like} like</span>
           </div>
           <div className="postBottomRight">
             <span className="postCommentText">{post.comment} comments</span>

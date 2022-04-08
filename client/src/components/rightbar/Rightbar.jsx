@@ -66,6 +66,10 @@ const Rightbar = ({ user }) => {
   };
 
   const ProfileRightbar = () => {
+    const linkStyle = {
+      textDecoration: "none",
+      color: "black",
+    };
     return (
       <>
         {user.username !== currentUser.username && (
@@ -74,7 +78,7 @@ const Rightbar = ({ user }) => {
             {followed ? <RemoveIcon /> : <AddIcon />}
           </button>
         )}
-        <h4 className="rightbarTitle">User information</h4>
+        <h4 className="rightbarTitle info">User information</h4>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
@@ -84,24 +88,11 @@ const Rightbar = ({ user }) => {
             <span className="rightbarInfoKey">From:</span>
             <span className="rightbarInfoValue">{user.from}</span>
           </div>
-          <div className="rightbarInfoItem">
-            <span className="rightbarInfoKey">Relationship:</span>
-            <span className="rightbarInfoValue">
-              {user.relationship === 1
-                ? "Single"
-                : user.relationship === 1
-                ? "Married"
-                : "-"}
-            </span>
-          </div>
         </div>
         <h4 className="rightbarTitle">User friends</h4>
         <div className="rightbarFollowings">
           {friends.map((friend) => (
-            <Link
-              to={"/profile/" + friend.username}
-              style={{ textDecoration: "none" }}
-            >
+            <Link to={"/profile/" + friend.username} style={linkStyle}>
               <div className="rightbarFollowing">
                 <img
                   src={

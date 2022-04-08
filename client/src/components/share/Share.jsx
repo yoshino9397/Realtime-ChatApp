@@ -91,15 +91,8 @@ const Share = () => {
               <span className="shareOptionText">Tag</span>
             </div>
             <div className="shareOption">
-              <MdRoom style={{ color: "#628272" }} className="shareIcon" />
+              <MdRoom style={{ color: "#F8BC43" }} className="shareIcon" />
               <span className="shareOptionText">Location</span>
-            </div>
-            <div className="shareOption">
-              <MdEmojiEmotions
-                style={{ color: "#eab354" }}
-                className="shareIcon"
-              />
-              <span className="shareOptionText">Feelings</span>
             </div>
           </div>
           <button className="shareButton" type="submit">
