@@ -23,10 +23,12 @@ function App() {
         />
         <Route
           path="/messenger"
-          // element={!user ? <Navigate to="/" replace /> : <Messenger />}
-          element={<Messenger />}
+          element={!user ? <Navigate to="/" replace /> : <Messenger />}
         />
-        <Route path="/profile/:username" element={<Profile />} />
+        <Route
+          path="/profile/:username"
+          element={user ? <Profile /> : <Navigate to="/login" replace />}
+        />
       </Routes>
     </BrowserRouter>
   );
