@@ -77,6 +77,12 @@
   cursor: default;
 }
 
+h3{
+  margin-top:10px;
+  margin-bottom: 30px;
+  color: rgb(94, 92, 92);
+  border-bottom: 1px solid gray;
+}
 @media screen and (max-width: 768px) {
   .chatMenu {
     flex: 1;

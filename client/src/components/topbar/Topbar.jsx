@@ -34,7 +34,13 @@ const Topbar = () => {
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-          <span className="topbarLink">Homepage</span>
+          <Link
+            to={"/messenger"}
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <span className="topbarLink">Chat Page</span>
+          </Link>
+
           <span className="topbarLink" onClick={handleClick}>
             Sign Out
           </span>

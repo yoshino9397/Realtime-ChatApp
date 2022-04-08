@@ -17,6 +17,7 @@ const Messenger = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
+  const [onlineUsers, setOnlineUsers] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,10 +66,9 @@ const Messenger = () => {
   useEffect(() => {
     socket.current.emit("addUser", user._id);
     socket.current.on("getUsers", (users) => {
-      // setOnlineUsers(
-      //   user.followings.filter((f) => users.some((u) => u.userId === f))
-      // );
-      console.log(users);
+      setOnlineUsers(
+        user.followings.filter((f) => users.some((u) => u.userId === f))
+      );
     });
   }, [user]);
 
@@ -107,8 +107,8 @@ const Messenger = () => {
         <div className="chatMenu">
           <div className="chatMenuWrapper">
             <input placeholder="Search for friends" className="chatMenuInput" />
-            {conversations.map((c) => (
-              <div onClick={() => setCurrentChat(c)}>
+            {conversations.map((c, item) => (
+              <div onClick={() => setCurrentChat(c)} key={item}>
                 <Conversation conversation={c} currentUser={user} />
               </div>
             ))}
@@ -119,8 +119,8 @@ const Messenger = () => {
             {currentChat ? (
               <>
                 <div className="chatBoxTop">
-                  {messages.map((m) => (
-                    <div ref={scrollRef}>
+                  {messages.map((m, item) => (
+                    <div ref={scrollRef} key={item}>
                       <Message message={m} own={m.sender === user._id} />
                     </div>
                   ))}
@@ -146,7 +146,12 @@ const Messenger = () => {
         </div>
         <div className="chatOnline">
           <div className="chatOnlineWrapper">
-            <ChatOnline />
+          <h3>Online friends</h3>
+            <ChatOnline
+              onlineUsers={onlineUsers}
+              currentId={user._id}
+              setCurrentChat={setCurrentChat}
+            />
           </div>
         </div>
       </div>
