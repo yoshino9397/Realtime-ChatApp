@@ -4,7 +4,6 @@ import {
   MdLabelImportant,
   MdRoom,
   MdPermMedia,
-  MdEmojiEmotions,
   MdCancel,
 } from "react-icons/md";
 import { useContext, useRef, useState } from "react";
