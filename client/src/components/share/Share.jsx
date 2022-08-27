@@ -18,24 +18,34 @@ const Share = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const newPost = {
-      userId: user._id,
-      desc: desc.current.value,
-    };
     if (file) {
       const data = new FormData();
-      const fileName = Date.now() + file.name;
-      data.append("name", fileName);
       data.append("file", file);
-      newPost.img = fileName;
+      data.append("upload_preset", "uploads");
       try {
-        await axios.post("/upload", data);
+        const uploadRes = await axios.post(
+          "https://api.cloudinary.com/v1_1/dz47zx0rk/image/upload",
+          data
+        );
+        const { url } = uploadRes.data;
+        const newPost = {
+          userId: user._id,
+          desc: desc.current.value,
+          img: url,
+        };
+        await axios.post("/posts", newPost);
+        window.location.reload();
+      } catch (err) {}
+    } else {
+      const newPost = {
+        userId: user._id,
+        desc: desc.current.value,
+      };
+      try {
+        await axios.post("/posts", newPost);
+        window.location.reload();
       } catch (err) {}
     }
-    try {
-      await axios.post("/posts", newPost);
-      window.location.reload();
-    } catch (err) {}
   };
 
   return (
